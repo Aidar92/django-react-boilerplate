@@ -2,6 +2,8 @@ import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "./login/LoginActions";
+import { AddNote } from "./notes/AddNote";
+import { NotesList } from "./notes/NotesList";
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,7 +24,8 @@ export const Dashboard = () => {
         </Navbar.Collapse>
       </Navbar>
       <Container>
-        <h1>Dashboard</h1>
+        <NotesList />
+        <AddNote />
       </Container>
     </div>
   );
