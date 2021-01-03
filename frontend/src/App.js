@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import "react-toastify/dist/ReactToastify.css";
 
 import { Root } from "./Root";
+import { requeireAuth } from "./utils/RequireAuth";
 function App() {
   return (
     <div>
@@ -16,7 +17,7 @@ function App() {
         <Switch>
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={requeireAuth(Dashboard)} />
           <Route exact path="/" component={Home} />
           <Route path="*">Ups</Route>
         </Switch>
