@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Col, Container, Form, FormControl, Row, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
+import { login } from "./login/LoginActions";
 export const Login = () => {
+    const dispatch = useDispatch()
+
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -13,8 +16,8 @@ export const Login = () => {
               [e.target.name]: e.target.value
           }))
       }
-      const onSignUpClick = () => {
-          console.log("Sign up", formData);
+      const onLoginClick = () => {
+          dispatch(login(formData, "/dashboard"))
       }
   return (
     <Container>
@@ -32,7 +35,7 @@ export const Login = () => {
                       <Form.Control type="password" name="password" placeholder="Enter password" value={formData.password} onChange={onChange} />
                   </Form.Group>
               </Form>
-              <Button color="primary" onClick={onSignUpClick}>Login</Button>
+              <Button color="primary" onClick={onLoginClick}>Login</Button>
               <p className="mt-2">
                   Don't have account? <Link to="/signup">Sign up</Link>
               </p>
